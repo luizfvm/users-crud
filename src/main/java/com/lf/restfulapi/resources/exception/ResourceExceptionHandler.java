@@ -1,5 +1,8 @@
 package com.lf.restfulapi.resources.exception;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
@@ -16,6 +19,8 @@ import com.lf.restfulapi.services.exception.ObjectNotFoundException;
 @ControllerAdvice
 public class ResourceExceptionHandler {
 
+	SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
+	
 	/**
 	 * Return a custom body error message
 	 * @param e  ObjectNotFoundException object
@@ -26,7 +31,8 @@ public class ResourceExceptionHandler {
 	@ExceptionHandler(ObjectNotFoundException.class)
 	public ResponseEntity<StandardError> objectNotFound(ObjectNotFoundException e, HttpServletRequest request) {
 		HttpStatus status = HttpStatus.NOT_FOUND;
-		StandardError error = new StandardError(System.currentTimeMillis(), status.value(), "Not found", e.getMessage(),
+		Date resultdate = new Date(System.currentTimeMillis());
+		StandardError error = new StandardError(sdf.format(resultdate), status.value(), "Not found", e.getMessage(),
 				request.getRequestURI());
 		return ResponseEntity.status(status).body(error);
 

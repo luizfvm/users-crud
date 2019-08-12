@@ -2,6 +2,8 @@ package com.lf.restfulapi.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.NotNull;
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.lf.restfulapi.domain.User;
@@ -15,7 +17,11 @@ public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	private String id;
+	
+	@NotNull(message="Cannot be null")
 	private String name;
+	
+	@NotNull(message="Cannot be null")
 	private String email;
 
 	public UserDTO() {

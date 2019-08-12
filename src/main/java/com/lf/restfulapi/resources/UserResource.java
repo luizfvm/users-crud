@@ -4,6 +4,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -68,7 +70,7 @@ public class UserResource {
 	 */
 
 	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody UserDTO objDto) {
+	public ResponseEntity<Void> insert(@Valid @RequestBody UserDTO objDto) {
 		User obj = userDto.fromDTO(objDto);
 		obj = userServ.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
@@ -97,7 +99,7 @@ public class UserResource {
 	 */
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Void> update(@RequestBody UserDTO objDto, @PathVariable String id) {
+	public ResponseEntity<Void> update(@Valid @RequestBody UserDTO objDto, @PathVariable String id) {
 		User obj = userDto.fromDTO(objDto);
 		obj.setId(id);
 		obj = userServ.update(obj);
