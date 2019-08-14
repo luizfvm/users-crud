@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.lf.restfulapi.domain.User;
-import com.lf.restfulapi.repositoy.UserRepositoy;
+import com.lf.restfulapi.repository.UserRepository;
 import com.lf.restfulapi.services.exception.ObjectNotFoundException;
 
 /**
@@ -18,7 +18,7 @@ import com.lf.restfulapi.services.exception.ObjectNotFoundException;
 public class UserService {
 
 	@Autowired
-	private UserRepositoy userRep;
+	private UserRepository userRep;
 
 	/**
 	 * Find all users
