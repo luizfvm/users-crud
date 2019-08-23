@@ -37,7 +37,7 @@ public class UserResource {
 	private UserDTO userDto;
 
 	/**
-	 * HTTP GET method
+	 * HTTP GET method to retrieve a representation of a resource
 	 * 
 	 * @return HTTP 201 response code
 	 */
@@ -50,7 +50,7 @@ public class UserResource {
 	}
 
 	/**
-	 * HTTP GET method
+	 * HTTP GET method to retrieve a representation of a resource
 	 * 
 	 * @param id  the user id
 	 * @return HTTP 200 response code
@@ -63,7 +63,7 @@ public class UserResource {
 	}
 
 	/**
-	 * HTTP POST method
+	 * HTTP POST method to create new resoures
 	 * 
 	 * @param objDto  UserDTO object
 	 * @return HTTP 201 response code
@@ -78,7 +78,7 @@ public class UserResource {
 	}
 
 	/**
-	 * HTTP DELETE method
+	 * HTTP DELETE method to delete a resource
 	 * 
 	 * @param id  the user id
 	 * @return HTTP 204 response code
@@ -91,7 +91,7 @@ public class UserResource {
 	}
 
 	/**
-	 * HTTP PUT method
+	 * HTTP PUT method to update a known resource
 	 * 
 	 * @param objDto  UserDTO object
 	 * @param id  the user id

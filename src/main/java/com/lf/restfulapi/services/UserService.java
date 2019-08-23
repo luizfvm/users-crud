@@ -60,8 +60,13 @@ public class UserService {
 	 */
 
 	public void delete(String id) {
+		try {
 		findById(id);
 		userRep.deleteById(id);
+		}
+		catch (ObjectNotFoundException e) {
+			throw new ObjectNotFoundException("Id not found");
+		}
 	}
 
 	/**
@@ -72,9 +77,14 @@ public class UserService {
 	 */
 
 	public User update(User obj) {
+		try {
 		User user = findById(obj.getId());
 		updateData(user, obj);
 		return userRep.save(user);
+		}
+		catch (ObjectNotFoundException e) {
+			throw new ObjectNotFoundException("Id not found");
+		}
 	}
 
 	/**

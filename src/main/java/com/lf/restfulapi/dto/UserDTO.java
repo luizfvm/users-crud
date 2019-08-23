@@ -2,7 +2,9 @@ package com.lf.restfulapi.dto;
 
 import java.io.Serializable;
 
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -18,10 +20,12 @@ public class UserDTO implements Serializable {
 
 	private String id;
 	
-	@NotNull(message="Cannot be null")
+	@NotEmpty(message="Name cannot be null or empty")
+	@Size(min = 4, max = 20, message = "Name must be between 4 and 20 characters")
 	private String name;
 	
-	@NotNull(message="Cannot be null")
+	@NotEmpty(message="Email cannot be null or empty")
+	@Email(message = "Email should be valid")
 	private String email;
 
 	public UserDTO() {
