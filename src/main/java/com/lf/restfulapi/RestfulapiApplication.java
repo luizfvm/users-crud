@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * <h1>RESTful API</h1> 
  * This project is a simple RESTful API with Java and Spring Tool Suite that can be tested using Postman. 
  * <p>
- * In this webservice you can POST, GET, PUT and DELETE data from Users.
+ * In this web service you can POST, GET, PUT and DELETE data from Users.
  */
 
 @SpringBootApplication

@@ -3,6 +3,10 @@ package com.lf.restfulapi.resources.exception;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * ValidationError class responsible for implementing the error fields, constructors and methods of MethodArgumentNotValidException.
+ */
+
 public class ValidationError extends StandardError {
 	private static final long serialVersionUID = 1L;
 

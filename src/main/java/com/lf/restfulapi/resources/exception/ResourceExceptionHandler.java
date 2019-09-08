@@ -1,8 +1,5 @@
 package com.lf.restfulapi.resources.exception;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
-
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.http.HttpStatus;
@@ -13,6 +10,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.lf.restfulapi.services.exception.ObjectNotFoundException;
+import com.lf.restfulapi.util.DateFormatter;
 
 /**
  * ResourceExceptionHandler class responsible for handling exceptions.
@@ -21,8 +19,6 @@ import com.lf.restfulapi.services.exception.ObjectNotFoundException;
 @ControllerAdvice
 public class ResourceExceptionHandler {
 
-	SimpleDateFormat sdf = new SimpleDateFormat("MMM dd,yyyy HH:mm");
-	
 	/**
 	 * Return a custom error message for ObjectNotFoundException.
 	 * 
@@ -30,17 +26,16 @@ public class ResourceExceptionHandler {
 	 * @param request  HttpServletRequest object
 	 * @return HTTP 404 response code
 	 */
-	
+
 	@ExceptionHandler(ObjectNotFoundException.class)
 	public ResponseEntity<StandardError> objectNotFound(ObjectNotFoundException e, HttpServletRequest request) {
 		HttpStatus status = HttpStatus.NOT_FOUND;
-		Date resultdate = new Date(System.currentTimeMillis());
-		StandardError error = new StandardError(sdf.format(resultdate), status.value(), "Not Found", e.getMessage(),
-				request.getRequestURI());
+		StandardError error = new StandardError(DateFormatter.formatToISO8601(), status.value(), "Not Found",
+				e.getMessage(), request.getRequestURI());
 		return ResponseEntity.status(status).body(error);
 
 	}
-	
+
 	/**
 	 * Return a custom error message for MethodArgumentNotValidException.
 	 * 
@@ -48,14 +43,14 @@ public class ResourceExceptionHandler {
 	 * @param request  HttpServletRequest object
 	 * @return HTTP 400 response code
 	 */
-	
+
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity<StandardError> argumentNotValid(MethodArgumentNotValidException e, HttpServletRequest request) {
+	public ResponseEntity<StandardError> argumentNotValid(MethodArgumentNotValidException e,
+			HttpServletRequest request) {
 		HttpStatus status = HttpStatus.BAD_REQUEST;
-		Date resultdate = new Date(System.currentTimeMillis());
-		ValidationError error = new ValidationError(sdf.format(resultdate), status.value(), "Bad Request", "Validation Error",
-				request.getRequestURI());
-		for ( FieldError x : e.getBindingResult().getFieldErrors()) {
+		ValidationError error = new ValidationError(DateFormatter.formatToISO8601(), status.value(), "Bad Request",
+				"Validation Error", request.getRequestURI());
+		for (FieldError x : e.getBindingResult().getFieldErrors()) {
 			error.addError(x.getField(), x.getDefaultMessage());
 		}
 		return ResponseEntity.status(status).body(error);

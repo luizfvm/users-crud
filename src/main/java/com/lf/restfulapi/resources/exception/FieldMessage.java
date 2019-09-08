@@ -2,6 +2,10 @@ package com.lf.restfulapi.resources.exception;
 
 import java.io.Serializable;
 
+/**
+ * StandardError class responsible for implementing the error messages of MethodArgumentNotValidException.
+ */
+
 public class FieldMessage implements Serializable {
 	private static final long serialVersionUID = 1L;
 

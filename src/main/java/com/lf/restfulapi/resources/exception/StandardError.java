@@ -3,7 +3,7 @@ package com.lf.restfulapi.resources.exception;
 import java.io.Serializable;
 
 /**
- * StandardError responsible for implementing the error message fields, constructors and methods.
+ * StandardError class responsible for implementing the error fields, constructors and methods of ObjectNotFoundException.
  */
 
 public class StandardError implements Serializable {

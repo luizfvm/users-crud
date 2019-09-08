@@ -21,7 +21,7 @@ public class UserService {
 	private UserRepository userRep;
 
 	/**
-	 * Find all users
+	 * Find all users.
 	 * 
 	 * @return users list
 	 */
@@ -31,7 +31,7 @@ public class UserService {
 	}
 
 	/**
-	 * Find a user by the id
+	 * Find a user by the id.
 	 * 
 	 * @param id  the user id
 	 * @return the user searched. If the id is null, throw ObjectNotFoundException
@@ -43,7 +43,7 @@ public class UserService {
 	}
 
 	/**
-	 * Create a new user
+	 * Create a new user.
 	 * 
 	 * @param obj  User object
 	 * @return new user
@@ -54,7 +54,7 @@ public class UserService {
 	}
 
 	/**
-	 * Delete a user
+	 * Delete a user.
 	 * 
 	 * @param id  the user id
 	 */
@@ -70,7 +70,7 @@ public class UserService {
 	}
 
 	/**
-	 * Update a user
+	 * Update a user.
 	 * 
 	 * @param obj  User object
 	 * @return user updated
@@ -88,7 +88,7 @@ public class UserService {
 	}
 
 	/**
-	 * Update a user
+	 * Update a user.
 	 * 
 	 * @param user User object
 	 * @param obj  new User object with updated fields
