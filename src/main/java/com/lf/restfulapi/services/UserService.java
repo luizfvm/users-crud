@@ -88,10 +88,10 @@ public class UserService {
 	}
 
 	/**
-	 * Update a user.
+	 * Update user object with new values.
 	 * 
-	 * @param user User object
-	 * @param obj  new User object with updated fields
+	 * @param user old User object
+	 * @param obj  new User object
 	 */
 
 	private void updateData(User user, User obj) {

@@ -8,22 +8,29 @@ import javax.validation.constraints.Size;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.lf.restfulapi.domain.User;
+
+import io.swagger.annotations.ApiModelProperty;
 
 /**
  * UserDTO class responsible for carrying specific data between processes.
  */
 
+@JsonPropertyOrder({"id", "name", "email"})
 @SpringBootApplication
 public class UserDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@ApiModelProperty(notes = "Id auto generated")
 	private String id;
 	
+	@ApiModelProperty(notes = "Name of the user")
 	@NotEmpty(message="Name cannot be null or empty")
 	@Size(min = 4, max = 20, message = "Name must be between 4 and 20 characters")
 	private String name;
 	
+	@ApiModelProperty(notes = "Email of the user")
 	@NotEmpty(message="Email cannot be null or empty")
 	@Email(message = "Email should be valid")
 	private String email;

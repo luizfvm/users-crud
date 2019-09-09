@@ -22,10 +22,14 @@ import com.lf.restfulapi.domain.User;
 import com.lf.restfulapi.dto.UserDTO;
 import com.lf.restfulapi.services.UserService;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+
 /**
  * UserResource class responsible for implementing HTTP methods.
  */
 
+@Api(value="User Management System")
 @RestController
 @RequestMapping(value = "/users")
 public class UserResource {
@@ -37,11 +41,12 @@ public class UserResource {
 	private UserDTO userDto;
 
 	/**
-	 * HTTP GET method to retrieve a representation of a resource.
+	 * HTTP GET method to retrieve a representation of resources.
 	 * 
 	 * @return HTTP 200 response code
 	 */
-
+	
+	@ApiOperation(value = "Find all users")
 	@GetMapping
 	public ResponseEntity<List<UserDTO>> findAll() {
 		List<User> listUser = userServ.findAll();
@@ -56,6 +61,7 @@ public class UserResource {
 	 * @return HTTP 200 response code
 	 */
 
+	@ApiOperation(value = "Find a user by the id")
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<UserDTO> findById(@PathVariable String id) {
 		User user = userServ.findById(id);
@@ -69,6 +75,7 @@ public class UserResource {
 	 * @return HTTP 201 response code
 	 */
 
+	@ApiOperation(value = "Create a new user")
 	@PostMapping
 	public ResponseEntity<Void> insert(@Valid @RequestBody UserDTO objDto) {
 		User obj = userDto.fromDTO(objDto);
@@ -84,6 +91,7 @@ public class UserResource {
 	 * @return HTTP 204 response code
 	 */
 
+	@ApiOperation(value = "Delete a user")
 	@DeleteMapping(value = "/{id}")
 	public ResponseEntity<Void> delete(@PathVariable String id) {
 		userServ.delete(id);
@@ -98,6 +106,7 @@ public class UserResource {
 	 * @return HTTP 204 response code
 	 */
 
+	@ApiOperation(value = "Update a user")
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Void> update(@Valid @RequestBody UserDTO objDto, @PathVariable String id) {
 		User obj = userDto.fromDTO(objDto);
