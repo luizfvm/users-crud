@@ -6,6 +6,9 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -50,8 +53,11 @@ public class UserResource {
 	@GetMapping
 	public ResponseEntity<List<UserDTO>> findAll() {
 		List<User> listUser = userServ.findAll();
-		List<UserDTO> listDto = listUser.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
-		return ResponseEntity.ok().body(listDto);
+		List<UserDTO> listUserDto = listUser.stream().map(x -> new UserDTO(x)).collect(Collectors.toList());
+		for (UserDTO userDto : listUserDto) {
+			addHATEOAS(userDto);
+		}
+		return ResponseEntity.ok().body(listUserDto);
 	}
 
 	/**
@@ -65,22 +71,25 @@ public class UserResource {
 	@GetMapping(value = "/{id}")
 	public ResponseEntity<UserDTO> findById(@PathVariable String id) {
 		User user = userServ.findById(id);
-		return ResponseEntity.ok().body(new UserDTO(user));
+		UserDTO userDto = new UserDTO(user);
+		addHATEOAS(userDto);
+		return ResponseEntity.ok().body(userDto);
 	}
 
 	/**
 	 * HTTP POST method to create new resources.
 	 * 
-	 * @param objDto  UserDTO object
+	 * @param obj  UserDTO object
 	 * @return HTTP 201 response code
 	 */
 
 	@ApiOperation(value = "Create a new user")
 	@PostMapping
-	public ResponseEntity<Void> insert(@Valid @RequestBody UserDTO objDto) {
-		User obj = userDto.fromDTO(objDto);
-		obj = userServ.insert(obj);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
+	public ResponseEntity<Void> insert(@Valid @RequestBody UserDTO obj) {
+		User user = userDto.fromDTO(obj);
+		user = userServ.insert(user);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(user.getId()).toUri();
+		addHATEOAS(obj);
 		return ResponseEntity.created(uri).build();
 	}
 
@@ -101,18 +110,28 @@ public class UserResource {
 	/**
 	 * HTTP PUT method to update a known resource.
 	 * 
-	 * @param objDto  UserDTO object
+	 * @param obj  UserDTO object
 	 * @param id  the user id
 	 * @return HTTP 204 response code
 	 */
 
 	@ApiOperation(value = "Update a user")
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Void> update(@Valid @RequestBody UserDTO objDto, @PathVariable String id) {
-		User obj = userDto.fromDTO(objDto);
-		obj.setId(id);
-		obj = userServ.update(obj);
+	public ResponseEntity<Void> update(@Valid @RequestBody UserDTO obj, @PathVariable String id) {
+		User user = userDto.fromDTO(obj);
+		user.setId(id);
+		user = userServ.update(user);
 		return ResponseEntity.noContent().build();
+	}
+	
+	/**
+	 * Add hypermedia links in the response contents.
+	 * 
+	 * @param obj  UserDTO object
+	 */
+	
+	private void addHATEOAS(UserDTO obj) {
+		obj.add(linkTo(methodOn(UserResource.class).findById(obj.getUserId())).withSelfRel());
 	}
 
 }

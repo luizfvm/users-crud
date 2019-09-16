@@ -1,6 +1,6 @@
 ### RESTful API
 ---
-This project is a simple RESTful API with Java and Spring Tool Suite that can be tested using Postman. In this web 
+This project is a simple RESTful API with Java and Spring Tool Suite. In this web 
 service you can POST, GET, PUT and DELETE data from Users.
 
 ### Setup
@@ -19,7 +19,10 @@ Database name: database / Port: 27017
 
 :open_file_folder: src/main/resources/application.properties
 * Run the project
-* Test with Postman or whatever tool you may prefer
+* Test the API with SwaggerUI
+```
+http://localhost:8080/swagger-ui.html
+```
 
 ### Usage
 ---
@@ -34,7 +37,7 @@ Database name: database / Port: 27017
 
 ### Built With
 ---
-* [STS](https://spring.io/tools) - IDE
+* [Spring](https://spring.io) - Framework
 * [Maven](https://maven.apache.org) - Dependency Management
 * [Tomcat](http://tomcat.apache.org) - Servlet Container
 * [MongoDB](https://www.mongodb.com) - NoSQL Database

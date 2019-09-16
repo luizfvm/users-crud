@@ -7,7 +7,10 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.hateoas.ResourceSupport;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.lf.restfulapi.domain.User;
 
@@ -17,20 +20,18 @@ import io.swagger.annotations.ApiModelProperty;
  * UserDTO class responsible for carrying specific data between processes.
  */
 
-@JsonPropertyOrder({"id", "name", "email"})
+@JsonPropertyOrder({ "id", "name", "email" })
+@JsonIgnoreProperties(ignoreUnknown = true)
 @SpringBootApplication
-public class UserDTO implements Serializable {
+public class UserDTO extends ResourceSupport implements Serializable {
 	private static final long serialVersionUID = 1L;
 
-	@ApiModelProperty(notes = "Id auto generated")
 	private String id;
 	
-	@ApiModelProperty(notes = "Name of the user")
 	@NotEmpty(message="Name cannot be null or empty")
 	@Size(min = 4, max = 20, message = "Name must be between 4 and 20 characters")
 	private String name;
 	
-	@ApiModelProperty(notes = "Email of the user")
 	@NotEmpty(message="Email cannot be null or empty")
 	@Email(message = "Email should be valid")
 	private String email;
@@ -43,12 +44,13 @@ public class UserDTO implements Serializable {
 		name = obj.getName();
 		email = obj.getEmail();
 	}
-
-	public String getId() {
+	
+	@JsonProperty("id")
+	public String getUserId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setUserId(String id) {
 		this.id = id;
 	}
 
@@ -69,7 +71,7 @@ public class UserDTO implements Serializable {
 	}
 
 	public User fromDTO(UserDTO objDto) {
-		return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
+		return new User(objDto.getUserId(), objDto.getName(), objDto.getEmail());
 	}
 
 }

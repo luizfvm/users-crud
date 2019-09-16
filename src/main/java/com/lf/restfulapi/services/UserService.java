@@ -90,13 +90,13 @@ public class UserService {
 	/**
 	 * Update user object with new values.
 	 * 
-	 * @param user old User object
-	 * @param obj  new User object
+	 * @param obj old User object
+	 * @param newObj  new User object
 	 */
 
-	private void updateData(User user, User obj) {
-		user.setName(obj.getName());
-		user.setEmail(obj.getEmail());
+	private void updateData(User obj, User newObj) {
+		obj.setName(newObj.getName());
+		obj.setEmail(newObj.getEmail());
 	}
 
 }
