@@ -1,0 +1,38 @@
+<div class="card-body">
+    <div class="float-left">
+      <h4>User List</h4>
+    </div>
+    <div class="float-right">
+      <button type="button" class="btn btn-primary" [routerLink]="['new']">New User</button>
+    </div>
+  </div>
+ <div class="card-body">
+    <table class="table table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th>Id</th>
+          <th>User</th>
+          <th>Email</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td></td>
+          <td></td>
+          <td></td>
+          <td>
+            <span class="float-right">
+              <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(user.name)">
+                Update
+              </button>
+
+              <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(user)">
+                Delete
+              </button>
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+</div>
