@@ -3,7 +3,7 @@
       <h4>User List</h4>
     </div>
     <div class="float-right">
-      <button type="button" class="btn btn-primary" [routerLink]="['new']">New User</button>
+      <button type="button" class="btn btn-primary" class="btn btn-success" [routerLink]="['new']">New User</button>
     </div>
   </div>
  <div class="card-body">
@@ -17,17 +17,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
+        <tr *ngFor='let user of users'>
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
           <td>
             <span class="float-right">
-              <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(user.name)">
+              <button class="btn btn-warning" (click)="onEdit(user.name)">
                 Update
               </button>
 
-              <button class="btn btn-outline-danger mb-1 btn-sm" (click)="onDelete(user)">
+              <button class="btn btn-danger" (click)="onDelete(user)">
                 Delete
               </button>
             </span>
