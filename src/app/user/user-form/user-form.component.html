@@ -1,0 +1,48 @@
+<div class="card-body">
+  <div>
+    <h4>Create a new user</h4>
+  </div>
+  <form
+    class="needs-validation"
+    novalidate
+    [formGroup]="form"
+    style="padding-top: 10px"
+  >
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Username"
+          formControlName="name"
+        />
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Test.
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="col-md-4 mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="email"
+          placeholder="Email"
+          required
+        />
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Please provide a valid email.
+        </div>
+      </div>
+    </div>
+  </form>
+  <button class="btn btn-success">Save</button>
+  <button class="btn btn-default" [routerLink]="['/']">Cancel</button>
+</div>

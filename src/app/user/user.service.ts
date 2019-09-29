@@ -8,7 +8,7 @@ import { tap } from 'rxjs/operators';
 })
 export class UserService {
 
-  private readonly API = 'http://localhost:8080/users';
+  private readonly API = '/api/users';
 
   constructor(private http: HttpClient) { }
 

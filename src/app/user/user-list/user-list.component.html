@@ -1,38 +1,44 @@
 <div class="card-body">
-    <div class="float-left">
-      <h4>User List</h4>
-    </div>
-    <div class="float-right">
-      <button type="button" class="btn btn-primary" class="btn btn-success" [routerLink]="['new']">New User</button>
-    </div>
+  <div class="float-left">
+    <h4>User List</h4>
   </div>
- <div class="card-body">
-    <table class="table table-hover">
-      <thead class="thead-dark">
-        <tr>
-          <th>Id</th>
-          <th>User</th>
-          <th>Email</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor='let user of users'>
-          <td>{{ user.id }}</td>
-          <td>{{ user.name }}</td>
-          <td>{{ user.email }}</td>
-          <td>
-            <span class="float-right">
-              <button class="btn btn-warning" (click)="onEdit(user.name)">
-                Update
-              </button>
+  <div class="float-right">
+    <button
+      type="button"
+      class="btn btn-success"
+      [routerLink]="['new']"
+    >
+      New User
+    </button>
+  </div>
+</div>
+<div class="card-body">
+  <table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Id</th>
+        <th>User</th>
+        <th>Email</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users$ | async">
+        <td>{{ user.id }}</td>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <span class="float-right">
+            <button class="btn btn-warning" (click)="onEdit(user.name)">
+              Update
+            </button>
 
-              <button class="btn btn-danger" (click)="onDelete(user)">
-                Delete
-              </button>
-            </span>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+            <button class="btn btn-danger" (click)="onDelete(user)">
+              Delete
+            </button>
+          </span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
