@@ -8,12 +8,6 @@ import java.time.format.DateTimeFormatter;
  */
 
 public class DateFormatter {
-	
-	/**
-	 * Format the current date-time from the system to ISO8601 pattern.
-	 * 
-	 * @return the formatted date
-	 */
 
 	public static String formatToISO8601() {
 		LocalDateTime ldt = LocalDateTime.now();

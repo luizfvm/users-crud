@@ -20,44 +20,18 @@ public class UserService {
 	@Autowired
 	private UserRepository userRep;
 
-	/**
-	 * Find all users.
-	 * 
-	 * @return users list
-	 */
-
 	public List<User> findAll() {
 		return userRep.findAll();
 	}
-
-	/**
-	 * Find a user by the id.
-	 * 
-	 * @param id  the user id
-	 * @return the user searched. If the id is null, throw ObjectNotFoundException
-	 */
 
 	public User findById(String id) {
 		Optional<User> user = userRep.findById(id);
 		return user.orElseThrow(() -> new ObjectNotFoundException("Id not found"));
 	}
 
-	/**
-	 * Create a new user.
-	 * 
-	 * @param obj  User object
-	 * @return new user
-	 */
-
 	public User insert(User obj) {
 		return userRep.insert(obj);
 	}
-
-	/**
-	 * Delete a user.
-	 * 
-	 * @param id  the user id
-	 */
 
 	public void delete(String id) {
 		try {
@@ -69,13 +43,6 @@ public class UserService {
 		}
 	}
 
-	/**
-	 * Update a user.
-	 * 
-	 * @param obj  User object
-	 * @return user updated
-	 */
-
 	public User update(User obj) {
 		try {
 		User user = findById(obj.getId());
@@ -86,13 +53,6 @@ public class UserService {
 			throw new ObjectNotFoundException("Id not found");
 		}
 	}
-
-	/**
-	 * Update user object with new values.
-	 * 
-	 * @param obj old User object
-	 * @param newObj  new User object
-	 */
 
 	private void updateData(User obj, User newObj) {
 		obj.setName(newObj.getName());

@@ -19,14 +19,6 @@ import com.lf.restfulapi.util.DateFormatter;
 @ControllerAdvice
 public class ResourceExceptionHandler {
 
-	/**
-	 * Return a custom error message for ObjectNotFoundException.
-	 * 
-	 * @param e  ObjectNotFoundException object
-	 * @param request  HttpServletRequest object
-	 * @return HTTP 404 response code
-	 */
-
 	@ExceptionHandler(ObjectNotFoundException.class)
 	public ResponseEntity<StandardError> objectNotFound(ObjectNotFoundException e, HttpServletRequest request) {
 		HttpStatus status = HttpStatus.NOT_FOUND;
@@ -35,14 +27,6 @@ public class ResourceExceptionHandler {
 		return ResponseEntity.status(status).body(error);
 
 	}
-
-	/**
-	 * Return a custom error message for MethodArgumentNotValidException.
-	 * 
-	 * @param e  MethodArgumentNotValidException object
-	 * @param request  HttpServletRequest object
-	 * @return HTTP 400 response code
-	 */
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<StandardError> argumentNotValid(MethodArgumentNotValidException e,

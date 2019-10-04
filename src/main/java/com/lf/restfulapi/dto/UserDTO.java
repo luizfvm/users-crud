@@ -14,14 +14,12 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.lf.restfulapi.domain.User;
 
-import io.swagger.annotations.ApiModelProperty;
 
 /**
  * UserDTO class responsible for carrying specific data between processes.
  */
 
 @JsonPropertyOrder({ "id", "name", "email" })
-@JsonIgnoreProperties(ignoreUnknown = true)
 @SpringBootApplication
 public class UserDTO extends ResourceSupport implements Serializable {
 	private static final long serialVersionUID = 1L;

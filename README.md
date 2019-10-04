@@ -1,7 +1,6 @@
 ### RESTful API
 ---
-This project is a simple RESTful API with Java and Spring Tool Suite. In this web 
-service you can POST, GET, PUT and DELETE data from Users.
+This project is a simple RESTful API with Java and Spring. In this web service you can POST, GET, PUT and DELETE data from Users.
 
 ### Setup
 ---
