@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { User } from './curso';
-import { tap } from 'rxjs/operators';
+import { User } from './user';
+import { take } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,10 @@ export class UserService {
 
 list() {
   return this.http.get<User[]>(this.API)
-  .pipe(tap(console.log));
+}
+
+create(user) {
+  return this.http.post(this.API, user).pipe(take(1));
 }
 
 }
