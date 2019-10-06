@@ -9,7 +9,6 @@ import javax.validation.constraints.Size;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.hateoas.ResourceSupport;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.lf.restfulapi.domain.User;

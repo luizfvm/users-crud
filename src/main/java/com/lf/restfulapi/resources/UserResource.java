@@ -42,12 +42,6 @@ public class UserResource {
 
 	@Autowired
 	private UserDTO userDto;
-
-	/**
-	 * HTTP GET method to retrieve a representation of resources.
-	 * 
-	 * @return HTTP 200 response code
-	 */
 	
 	@ApiOperation(value = "Find all users")
 	@GetMapping
