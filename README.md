@@ -2,4 +2,4 @@
 ---
 This project is a simple REST Client made to consume my [RESTful API](https://github.com/luizfvm/restful-api).
 
-![Screenshot](src/assets/restclient.png)
+![Screenshot](https://github.com/luizfvm/rest-client/blob/master/src/assets/restclient.PNG)
