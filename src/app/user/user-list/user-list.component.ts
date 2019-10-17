@@ -3,7 +3,6 @@ import { UserService } from "../user.service";
 import { User } from "../user";
 import { Observable } from "rxjs";
 
-
 @Component({
   selector: "app-user-list",
   templateUrl: "./user-list.component.html",
@@ -13,11 +12,15 @@ import { Observable } from "rxjs";
 export class UserListComponent implements OnInit {
   users$: Observable<User[]>;
 
-  constructor(
-    private service: UserService,
-  ) {}
+  constructor(private service: UserService) {}
 
   ngOnInit() {
-    this.users$ = this.service.list();
+    this.users$ = this.service.findAll();
+  }
+
+  onDelete(user) {
+    this.service.delete(user.id).subscribe(success => {
+      this.users$ = this.service.findAll();
+    });
   }
 }

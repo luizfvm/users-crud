@@ -4,7 +4,7 @@
       <h4>Create a new User</h4>
     </div>
     <div class="form-row">
-      <div class="col-sm-3" style="margin-left: 20px; margin-top: 10px">
+      <div class="col-sm-3" id="field">
         <label for="name">Name</label>
         <input
           type="text"
@@ -35,7 +35,7 @@
           {{ formError("nome")["maxlength"].requiredLength }} characters long.
         </div>
       </div>
-      <div class="col-sm-4" style="margin-left: 20px; margin-top: 10px">
+      <div class="col-sm-4" id="field">
         <label for="name">Email</label>
         <input
           type="text"
@@ -47,13 +47,19 @@
         />
         <div
           class="invalid-feedback"
+          *ngIf="formError('email') && formError('email')['required']"
+        >
+          Email is required.
+        </div>
+        <div
+          class="invalid-feedback"
           *ngIf="formError('email') && formError('email')['email']"
         >
           Enter a valid email address.
         </div>
       </div>
     </div>
-    <div style="margin-left: 20px; margin-top: 20px; margin-bottom: 20px">
+    <div id="buttons">
       <button type="sumit" class="btn btn-primary" (click)="onSubmit()">
         Save
       </button>
