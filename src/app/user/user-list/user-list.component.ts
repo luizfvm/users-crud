@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { UserService } from "../user.service";
 import { User } from "../user";
 import { Observable } from "rxjs";
+import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
 
 @Component({
   selector: "app-user-list",
@@ -11,16 +12,34 @@ import { Observable } from "rxjs";
 })
 export class UserListComponent implements OnInit {
   users$: Observable<User[]>;
+  deleteModalRef: BsModalRef;
+  @ViewChild("deleteModal", { static: true }) deleteModal;
+  selectedUser: User;
 
-  constructor(private service: UserService) {}
+  constructor(
+    private userService: UserService,
+    private modalService: BsModalService
+  ) {}
 
   ngOnInit() {
-    this.users$ = this.service.findAll();
+    this.users$ = this.userService.findAll();
   }
 
   onDelete(user) {
-    this.service.delete(user.id).subscribe(success => {
-      this.users$ = this.service.findAll();
+    this.selectedUser = user;
+    this.deleteModalRef = this.modalService.show(this.deleteModal, {
+      class: "modal-sm"
     });
+  }
+
+  onConfirm() {
+    this.userService.delete(this.selectedUser.id).subscribe(success => {
+      this.users$ = this.userService.findAll();
+      this.deleteModalRef.hide();
+    });
+  }
+
+  onDecline() {
+    this.deleteModalRef.hide();
   }
 }
