@@ -22,4 +22,15 @@ export class UserService {
   delete(id) {
     return this.http.delete(`${this.API}/${id}`).pipe(take(1));
   }
+
+  update(user) {
+    return this.http.put(`${this.API}/${user.id}`, user).pipe(take(1));
+  }
+
+  save(user) {
+    if (user.id) {
+      return this.update(user);
+    }
+    return this.insert(user);
+  }
 }

@@ -3,6 +3,7 @@ import { UserService } from "../user.service";
 import { User } from "../user";
 import { Observable } from "rxjs";
 import { BsModalService, BsModalRef } from "ngx-bootstrap/modal";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-user-list",
@@ -18,7 +19,9 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -41,5 +44,9 @@ export class UserListComponent implements OnInit {
 
   onDecline() {
     this.deleteModalRef.hide();
+  }
+
+  onUpdate(id) {
+    this.router.navigate(["update", id], { relativeTo: this.route });
   }
 }

@@ -6,55 +6,26 @@
     <div class="form-row">
       <div class="col-sm-3" id="field">
         <label for="name">Name</label>
-        <input
-          type="text"
-          class="form-control"
-          id="name"
-          placeholder="Name"
-          formControlName="name"
-          [ngClass]="{ 'is-invalid': submitted && formError('name') }"
-        />
-        <div
-          class="invalid-feedback"
-          *ngIf="formError('name') && formError('name')['required']"
-        >
+        <input type="text" class="form-control" id="name" placeholder="Name" formControlName="name"
+          [ngClass]="{ 'is-invalid': submitted && formError('name') }" />
+        <div class="invalid-feedback" *ngIf="formError('name') && formError('name')['required']">
           Name is required.
         </div>
-        <div
-          class="invalid-feedback"
-          *ngIf="formError('name') && formError('name')['minlength']"
-        >
-          Name must be at least
-          {{ formError("name")["minlength"].requiredLength }} characters long.
+        <div class="invalid-feedback" *ngIf="formError('name') && formError('name')['minlength']">
+          Name must be at least {{ formError("name")["minlength"].requiredLength }} characters long.
         </div>
-        <div
-          class="invalid-feedback"
-          *ngIf="formError('name') && formError('name')['maxlength']"
-        >
-          Name must be at least
-          {{ formError("nome")["maxlength"].requiredLength }} characters long.
+        <div class="invalid-feedback" *ngIf="formError('name') && formError('name')['maxlength']">
+          Name must be less than {{ formError("name")["maxlength"].requiredLength }} characters long.
         </div>
       </div>
       <div class="col-sm-4" id="field">
         <label for="name">Email</label>
-        <input
-          type="text"
-          class="form-control"
-          id="email"
-          placeholder="Email"
-          formControlName="email"
-          [ngClass]="{ 'is-invalid': submitted && formError('email') }"
-        />
-        <div
-          class="invalid-feedback"
-          *ngIf="formError('email') && formError('email')['required']"
-        >
+        <input type="text" class="form-control" id="email" placeholder="Email" formControlName="email"
+          [ngClass]="{ 'is-invalid': submitted && formError('email') }" />
+        <div class="invalid-feedback" *ngIf="formError('email') && formError('email')['required']">
           Email is required.
         </div>
-        <div
-          class="invalid-feedback"
-          *ngIf="formError('email') && formError('email')['email']"
-        >
+        <div class="invalid-feedback" *ngIf="formError('email') && formError('email')['email']">
           Enter a valid email address.
         </div>
       </div>
