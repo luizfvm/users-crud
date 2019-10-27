@@ -10,20 +10,21 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./user-form.component.scss"]
 })
 export class UserFormComponent implements OnInit {
-  form: FormGroup;
+  formGroup: FormGroup;
   submitted = false;
+  formTitle = "";
 
   constructor(
-    private formbuilder: FormBuilder,
+    private formBuilder: FormBuilder,
     private userService: UserService,
     private location: Location,
     private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = this.route.snapshot.paramMap.get("id");
 
-    this.form = this.formbuilder.group({
+    this.formGroup = this.formBuilder.group({
       id: [id],
       name: [
         "",
@@ -31,17 +32,21 @@ export class UserFormComponent implements OnInit {
       ],
       email: ["", [Validators.required, Validators.email]]
     });
+
+    this.formGroup.value.id
+      ? (this.formTitle = "Update user: " + id)
+      : (this.formTitle = "Create a new user");
   }
 
   formError(field: string) {
-    return this.form.get(field).errors;
+    return this.formGroup.get(field).errors;
   }
 
   onSubmit() {
     this.submitted = true;
 
-    if (this.form.valid)
-      this.userService.save(this.form.value).subscribe(success => {
+    if (this.formGroup.valid)
+      this.userService.save(this.formGroup.value).subscribe(success => {
         this.location.back();
       });
   }

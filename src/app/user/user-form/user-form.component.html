@@ -1,7 +1,7 @@
 <div class="card mt-3">
-  <form class="needs-validation" novalidate [formGroup]="form">
+  <form class="needs-validation" novalidate [formGroup]="formGroup">
     <div class="card-header">
-      <h4>Create a new User</h4>
+      <h4 [innerHtml]="formTitle"></h4>
     </div>
     <div class="form-row">
       <div class="col-sm-3" id="field">
