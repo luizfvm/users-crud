@@ -26,13 +26,13 @@ http://localhost:8080/swagger-ui.html
 ### Usage
 ---
 #### User
-| Method | Route | Description
-| --- | --- | --- |
-| GET | users/ | Find all users
-| GET | users/{id} | Find a user by the id
-| POST | user/ | Create a new user
-| DELETE | user/{id} | Delete a user
-| PUT | user/{id} | Update a user
+| Method | Route | Description | Status codes
+| --- | --- | --- | :---: |
+| GET | users/ | Find all users | 200
+| GET | users/{id} | Find a user by the id | 200
+| POST | user/ | Create a new user | 201
+| DELETE | user/{id} | Delete a user | 204
+| PUT | user/{id} | Update a user | 204
 
 ### Built With
 ---
