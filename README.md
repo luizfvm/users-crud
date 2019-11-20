@@ -2,12 +2,12 @@
 ---
 This project is a simple RESTful API with Java and Spring. In this web service you can POST, GET, PUT and DELETE data from Users.
 
-![Screenshot](https://github.com/luizfvm/restful-api/tree/master/src/main/resources/static/images/restfulapi.PNG)
+![Screenshot](https://github.com/luizfvm/restful-api/blob/master/src/main/resources/static/images/restfulapi.PNG)
 
 ### Usage
 ---
 
-luizfvm-restful-api.herokuapp.com/swagger-ui.html
+[API on Heroku](https://luizfvm-restful-api.herokuapp.com/swagger-ui.html)
 
 #### User
 | Method | Route | Description | Status code
