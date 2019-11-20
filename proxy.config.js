@@ -1,4 +1,5 @@
-const proxy = [
+/*
+  const proxy = [
     {
       context: '/api',
       target: 'http://localhost:8080',
@@ -6,4 +7,4 @@ const proxy = [
     }
   ];
   module.exports = proxy;
-  
+*/

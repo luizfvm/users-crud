@@ -4,6 +4,10 @@ This project is a simple REST Client made to consume my [RESTful API](https://gi
 
 ![Screenshot](https://github.com/luizfvm/rest-client/blob/master/src/assets/restclient.PNG)
 
+### Usage
+---
+[APP on Firebase](https://luizfvm-rest-client.firebaseapp.com/users)
+
 ### Built With
 ---
 * [Angular CLI](https://cli.angular.io) - Framework
