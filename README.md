@@ -6,7 +6,7 @@ This project is a simple REST Client made to consume my [RESTful API](https://gi
 
 ### Usage
 ---
-[APP on Firebase](https://luizfvm-rest-client.firebaseapp.com/users)
+[APP on Firebase](https://lfvm-rest-client.firebaseapp.com/users)
 
 ### Built With
 ---
