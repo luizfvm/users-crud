@@ -1,29 +1,27 @@
-### RESTful API
+### Users CRUD
 ---
-This project is a simple RESTful API with Java and Spring. In this web service you can POST, GET, PUT and DELETE data from Users.
+This is a simple fullstack project which you can create, delete, update and retrieve information about users.
 
-![Screenshot](https://github.com/luizfvm/restful-api/blob/master/src/main/resources/static/images/restfulapi.PNG)
+![Screenshot](https://github.com/luizfvm/restful-api/blob/master/rest-client/src/assets/restclient.PNG)
 
 ### Usage
 ---
 
-[API on Heroku](https://luizfvm-restful-api.herokuapp.com/swagger-ui.html)
-
-#### User
-| Method | Route | Description | Status code
-| --- | --- | --- | :---: |
-| GET | users/ | Find all users | 200
-| GET | users/{id} | Find a user by the id | 200
-| POST | user/ | Create a new user | 201
-| DELETE | user/{id} | Delete a user | 204
-| PUT | user/{id} | Update a user | 204
+* [Backend on Heroku](https://luizfvm-restful-api.herokuapp.com/swagger-ui.html)
+* [Frontend on Firebase](https://lfvm-rest-client.firebaseapp.com/users)
 
 ### Built With
 ---
+Backend
 * [Spring](https://spring.io) - Framework
 * [Maven](https://maven.apache.org) - Dependency Management
 * [Tomcat](http://tomcat.apache.org) - Servlet Container
 * [MongoDB](https://www.mongodb.com) - NoSQL Database
+
+Frontend
+* [Angular CLI](https://cli.angular.io) - Framework
+* [Bootstrap](https://getbootstrap.com.br) - Front-end framework
+* [RxJS](https://rxjs-dev.firebaseapp.com) - Library
 
 ### License
 ---
