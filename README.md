@@ -4,6 +4,15 @@ This is a simple fullstack project which you can create, delete, update and retr
 
 ![Screenshot](https://github.com/luizfvm/restful-api/blob/master/rest-client/src/assets/restclient.PNG)
 
+### Run locally
+---
+
+Open the file `users-crud\restful-api\src\main\resources\application.properties` and update the uri.
+```
+spring.data.mongodb.uri=mongodb://localhost:27017/database
+```
+Run the backend and frontend scripts.
+
 ### Usage
 ---
 
