@@ -7,11 +7,7 @@ This is a simple fullstack project which you can create, delete, update and retr
 ### Run locally
 ---
 
-Open the file `users-crud\restful-api\src\main\resources\application.properties` and update the uri.
-```
-spring.data.mongodb.uri=mongodb://localhost:27017/database
-```
-Run the backend and frontend scripts.
+Run the deploy script. Make sure you have docker installed and running.
 
 ### Usage
 ---
@@ -26,6 +22,7 @@ Backend
 * [Maven](https://maven.apache.org) - Dependency Management
 * [Tomcat](http://tomcat.apache.org) - Servlet Container
 * [MongoDB](https://www.mongodb.com) - NoSQL Database
+* [Docker](https://www.docker.com) - Container Automation
 
 Frontend
 * [Angular CLI](https://cli.angular.io) - Framework

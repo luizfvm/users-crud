@@ -1,13 +1,44 @@
 version: '3.8'
+
 services:
-  database:
+
+  mongo:
     image: mongo:latest
+    container_name: mongodb
     environment:
       MONGO_INITDB_DATABASE: database
     ports: 
     - 27017:27017
     volumes: 
     - mongodb_data_container:/data/db
-    
+    networks:
+      - shared-net
+  
+  backend:
+    image: backend:1.0
+    container_name: java_backend
+    links:
+      - mongo
+    depends_on:
+      - mongo
+    ports: 
+    - 8080:8080
+    networks:
+      - shared-net
+
+  frontend:
+    image: frontend:1.0
+    container_name: angular_frontend
+    depends_on:
+      - backend
+    ports: 
+    - 4200:4200
+    networks:
+      - shared-net
+
+networks:
+  shared-net:
+    driver: bridge
+
 volumes:
   mongodb_data_container:
